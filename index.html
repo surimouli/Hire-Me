@@ -4,75 +4,189 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hire Me 🙏</title>
+
+    <!-- Cute modern font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
-            background: black;
+            min-height: 100vh;
+            background: radial-gradient(circle at top, #2a0000 0%, #000000 45%, #000000 100%);
             color: red;
-            font-family: Arial, Helvetica, sans-serif;
-            text-align: center;
+            font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            display: flex;
+            flex-direction: column;
         }
 
         /* NAV BAR */
         nav {
-            background: #111;
-            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            background: linear-gradient(to right, rgba(20, 0, 0, 0.9), rgba(0, 0, 0, 0.95));
+            border-bottom: 1px solid rgba(255, 0, 0, 0.25);
+            padding: 14px 24px;
             display: flex;
             justify-content: center;
-            gap: 30px;
-            font-size: 18px;
-            border-bottom: 2px solid #333;
+            gap: 18px;
         }
 
         nav a {
-            color: red;
+            color: #ff6666;
             text-decoration: none;
-            transition: 0.2s;
             cursor: pointer;
+            font-size: 14px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+            white-space: nowrap;
         }
 
         nav a:hover {
-            color: white;
-            transform: scale(1.1);
+            color: #ffffff;
+            border-color: rgba(255, 0, 0, 0.5);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.35);
+            transform: translateY(-1px);
         }
 
         nav a.active {
-            border-bottom: 2px solid red;
+            color: #ffffff;
+            background: rgba(255, 0, 0, 0.15);
+            border-color: rgba(255, 0, 0, 0.8);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
         }
 
-        /* MAIN CONTENT */
-        .container {
-            margin-top: 80px;
-            font-size: 40px;
-            min-height: 60vh;
+        /* MAIN LAYOUT */
+        .page-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 40px 16px 60px;
+        }
+
+        .page-card {
+            width: 100%;
+            max-width: 900px;
+            padding: 32px 24px 40px;
+            border-radius: 24px;
+            background: radial-gradient(circle at top left, rgba(60, 0, 0, 0.7), rgba(5, 0, 0, 0.95));
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            box-shadow:
+                0 0 25px rgba(255, 0, 0, 0.35),
+                0 20px 60px rgba(0, 0, 0, 0.9);
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
+            text-align: center;
+        }
+
+        .main-heading {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            text-shadow: 0 0 18px rgba(255, 0, 0, 0.8);
+        }
+
+        .emoji-line {
+            font-size: 28px;
+            margin-bottom: 4px;
         }
 
         .sub {
-            margin-top: 15px;
-            font-size: 18px;
-            color: red;
+            margin-top: 10px;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #ffb3b3;
             max-width: 600px;
+        }
+
+        .sub strong {
+            color: #ff6666;
+        }
+
+        .small-label {
+            margin-top: 18px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #ff8080;
+            opacity: 0.8;
         }
 
         .tab-content {
             display: none;
+            width: 100%;
+            margin-top: 10px;
         }
 
         .tab-content.active {
             display: block;
         }
 
+        .tab-title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-shadow: 0 0 12px rgba(255, 0, 0, 0.7);
+        }
+
         .gif-wrapper {
-            margin-top: 25px;
+            margin-top: 26px;
         }
 
         .gif-wrapper img {
-            max-width: 300px;
-            border-radius: 10px;
+            max-width: 260px;
+            width: 100%;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 0, 0, 0.5);
+            box-shadow:
+                0 0 18px rgba(255, 0, 0, 0.6),
+                0 14px 40px rgba(0, 0, 0, 0.9);
+        }
+
+        footer {
+            padding: 8px 16px 16px;
+            text-align: center;
+            font-size: 11px;
+            color: #ff8080;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 720px) {
+            nav {
+                flex-wrap: wrap;
+                row-gap: 10px;
+            }
+
+            .page-card {
+                padding: 24px 18px 32px;
+                border-radius: 20px;
+            }
+
+            .main-heading {
+                font-size: 30px;
+            }
+
+            .tab-title {
+                font-size: 26px;
+            }
+
+            .gif-wrapper img {
+                max-width: 220px;
+            }
         }
     </style>
 </head>
@@ -92,106 +206,116 @@
     </nav>
 
     <!-- MAIN CONTENT AREA -->
-    <div class="container">
-        <!-- HOME TAB (NO GIF) -->
-        <div id="home" class="tab-content active">
-            <div>HIRE ME 😭🙏</div>
-            <div class="sub">
-                I write code, fix bugs, break things (in a fun way), and drink concerning amounts of coffee.
+    <div class="page-wrapper">
+        <div class="page-card">
+            <!-- HOME TAB (NO GIF) -->
+            <div id="home" class="tab-content active">
+                <div class="emoji-line">😭🙏</div>
+                <div class="main-heading">Hire Me</div>
+                <div class="sub">
+                    I write code, fix bugs, break things (in a <strong>fun</strong> way), and drink concerning amounts of coffee.
+                </div>
+                <div class="sub">
+                    Seriously. Hire me before I make another dramatic website like this.
+                </div>
+                <div class="small-label">
+                    click the “pleeeease” tabs above to experience a full-stack begging application
+                </div>
             </div>
-            <div class="sub">
-                Seriously. Hire me before I make another dramatic website like this.
-            </div>
-        </div>
 
-        <!-- PLEEASE (GIF #1) -->
-        <div id="pleease" class="tab-content">
-            <div>Pleease 🥺</div>
-            <div class="sub">
-                Look how organized my begging is. Imagine my project management skills.
+            <!-- PLEEASE (GIF #1) -->
+            <div id="pleease" class="tab-content">
+                <div class="tab-title">Pleease 🥺</div>
+                <div class="sub">
+                    Look how organized my begging is. Imagine my project management skills.
+                </div>
+                <div class="gif-wrapper">
+                    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW54a3A0aTI5dmlrMDBxazBxcmVleHVrYmkwdWUwMWFtZmpncHBnbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/98MaHVwJOmWMz4cz1K/giphy.gif" alt="Pleease Gif">
+                </div>
             </div>
-            <div class="gif-wrapper">
-                <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW54a3A0aTI5dmlrMDBxazBxcmVleHVrYmkwdWUwMWFtZmpncHBnbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/98MaHVwJOmWMz4cz1K/giphy.gif" alt="Pleease Gif">
-            </div>
-        </div>
 
-        <!-- PLEEEASE (GIF #2) -->
-        <div id="pleeease" class="tab-content">
-            <div>Pleeease 😭</div>
-            <div class="sub">
-                I promise I actually know what Git is now. Mostly. 90%. Okay, 87%.
+            <!-- PLEEEASE (GIF #2) -->
+            <div id="pleeease" class="tab-content">
+                <div class="tab-title">Pleeease 😭</div>
+                <div class="sub">
+                    I promise I actually know what Git is now. Mostly. 90%. Okay, 87%.
+                </div>
+                <div class="gif-wrapper">
+                    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcW4ydzVqZDZvdzY4N2k3ejA4bTFuajhwbnQ3dHQ2dWhsNWRiazN6NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/OPU6wzx8JrHna/giphy.gif" alt="Pleeease Gif">
+                </div>
             </div>
-            <div class="gif-wrapper">
-                <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcW4ydzVqZDZvdzY4N2k3ejA4bTFuajhwbnQ3dHQ2dWhsNWRiazN6NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/OPU6wzx8JrHna/giphy.gif" alt="Pleeease Gif">
-            </div>
-        </div>
 
-        <!-- PLEEEEASE (GIF #3) -->
-        <div id="pleeeease" class="tab-content">
-            <div>Pleeeease 🙇‍♀️</div>
-            <div class="sub">
-                I can debug, document, and deliver… and also bring snacks to meetings.
+            <!-- PLEEEEASE (GIF #3) -->
+            <div id="pleeeease" class="tab-content">
+                <div class="tab-title">Pleeeease 🙇‍♀️</div>
+                <div class="sub">
+                    I can debug, document, and deliver… and also bring snacks to meetings.
+                </div>
+                <div class="gif-wrapper">
+                    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjBhY2hramZ1cGdpeXBoeThuOHdoOWE3aWp1ZG1pd214czY2OXJjeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L95W4wv8nnb9K/giphy.gif" alt="Pleeeease Gif">
+                </div>
             </div>
-            <div class="gif-wrapper">
-                <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjBhY2hramZ1cGdpeXBoeThuOHdoOWE3aWp1ZG1pd214czY2OXJjeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L95W4wv8nnb9K/giphy.gif" alt="Pleeeease Gif">
-            </div>
-        </div>
 
-        <!-- PLEEEEEASE (GIF #4) -->
-        <div id="pleeeeease" class="tab-content">
-            <div>Pleeeeease 😅</div>
-            <div class="sub">
-                Think of this as a very interactive cover letter, but more unhinged.
+            <!-- PLEEEEEASE (GIF #4) -->
+            <div id="pleeeeease" class="tab-content">
+                <div class="tab-title">Pleeeeease 😅</div>
+                <div class="sub">
+                    Think of this as a very interactive cover letter, but more unhinged.
+                </div>
+                <div class="gif-wrapper">
+                    <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjlzcmw3c3I3cm5zMm5jb24wdzBmcXdzYjNvM2hiMXYzY3I3dzRsOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6wrvdHFbwBrUFenu/giphy.gif" alt="Pleeeeease Gif">
+                </div>
             </div>
-            <div class="gif-wrapper">
-                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjlzcmw3c3I3cm5zMm5jb24wdzBmcXdzYjNvM2hiMXYzY3I3dzRsOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6wrvdHFbwBrUFenu/giphy.gif" alt="Pleeeeease Gif">
-            </div>
-        </div>
 
-        <!-- PLEEEEEEASE (GIF #5 - UPDATED) -->
-        <div id="pleeeeeease" class="tab-content">
-            <div>Pleeeeeease 🤲</div>
-            <div class="sub">
-                I learn fast, ship things, and only cry over bugs <i>occasionally</i>.
+            <!-- PLEEEEEEASE (GIF #5 - UPDATED) -->
+            <div id="pleeeeeease" class="tab-content">
+                <div class="tab-title">Pleeeeeease 🤲</div>
+                <div class="sub">
+                    I learn fast, ship things, and only cry over bugs <i>occasionally</i>.
+                </div>
+                <div class="gif-wrapper">
+                    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW1vMXBlZ241MnhwY2E3cTQ5cjlhdWpsazJ5a242b2JmMXB5aTlkYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1tGdPXP57AWXtYJBze/giphy.gif" alt="Pleeeeeease Gif">
+                </div>
             </div>
-            <div class="gif-wrapper">
-                <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW1vMXBlZ241MnhwY2E3cTQ5cjlhdWpsazJ5a242b2JmMXB5aTlkYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1tGdPXP57AWXtYJBze/giphy.gif" alt="Pleeeeeease Gif">
-            </div>
-        </div>
 
-        <!-- PLEEEEEEEASE (GIF #6) -->
-        <div id="pleeeeeeease" class="tab-content">
-            <div>Pleeeeeeease 🧠</div>
-            <div class="sub">
-                Hire me now, before someone else does and you have FOMO forever.
+            <!-- PLEEEEEEEASE (GIF #6) -->
+            <div id="pleeeeeeease" class="tab-content">
+                <div class="tab-title">Pleeeeeeease 🧠</div>
+                <div class="sub">
+                    Hire me now, before someone else does and you have FOMO forever.
+                </div>
+                <div class="gif-wrapper">
+                    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHk5amcwbXJtOTB4a20ybDJnMmJ6bnZsaDl1OG0wbWQyeGU0MHJocSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YyECUhkxzUTDI0I5bx/giphy.gif" alt="Pleeeeeeease Gif">
+                </div>
             </div>
-            <div class="gif-wrapper">
-                <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHk5amcwbXJtOTB4a20ybDJnMmJ6bnZsaDl1OG0wbWQyeGU0MHJocSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YyECUhkxzUTDI0I5bx/giphy.gif" alt="Pleeeeeeease Gif">
-            </div>
-        </div>
 
-        <!-- PLEEEEEEEEASE (GIF #7) -->
-        <div id="pleeeeeeeease" class="tab-content">
-            <div>Pleeeeeeeease 😌</div>
-            <div class="sub">
-                I bring vibes, results, and way too many Notion dashboards.
+            <!-- PLEEEEEEEEASE (GIF #7) -->
+            <div id="pleeeeeeeease" class="tab-content">
+                <div class="tab-title">Pleeeeeeeease 😌</div>
+                <div class="sub">
+                    I bring vibes, results, and way too many Notion dashboards.
+                </div>
+                <div class="gif-wrapper">
+                    <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjd4NHVpMjBpbWwwczh4Mm9xNzVjMXRoY2gzb2Rkd2lkcnNidjZ1dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ad1A1dU6Rn1ni/giphy.gif" alt="Pleeeeeeeease Gif">
+                </div>
             </div>
-            <div class="gif-wrapper">
-                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjd4NHVpMjBpbWwwczh4Mm9xNzVjMXRoY2gzb2Rkd2lkcnNidjZ1dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ad1A1dU6Rn1ni/giphy.gif" alt="Pleeeeeeeease Gif">
-            </div>
-        </div>
 
-        <!-- PLEEEEEEEEEASE (GIF #8) -->
-        <div id="pleeeeeeeeease" class="tab-content">
-            <div>Pleeeeeeeeease 🙏</div>
-            <div class="sub">
-                At this point, not hiring me is actually a skill issue. Just saying.
-            </div>
-            <div class="gif-wrapper">
-                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2dlMHhkaGczczhjYmNpd2R3YWg2d29wYWdjcDNlamZ1YWY3YzB1MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hUKiOsbuxdXa0/giphy.gif" alt="Pleeeeeeeeease Gif">
+            <!-- PLEEEEEEEEEASE (GIF #8) -->
+            <div id="pleeeeeeeeease" class="tab-content">
+                <div class="tab-title">Pleeeeeeeeease 🙏</div>
+                <div class="sub">
+                    At this point, not hiring me is actually a skill issue. Just saying.
+                </div>
+                <div class="gif-wrapper">
+                    <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2dlMHhkaGczczhjYmNpd2R3YWg2d29wYWdjcDNlamZ1YWY3YzB1MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hUKiOsbuxdXa0/giphy.gif" alt="Pleeeeeeeeease Gif">
+                </div>
             </div>
         </div>
     </div>
+
+    <footer>
+        If you clicked through all the tabs and still don’t hire me… bold strategy, Cotton.
+    </footer>
 
     <script>
         // Simple tab switching logic
